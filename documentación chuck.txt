@@ -1,0 +1,135 @@
+SinOsc								oscilador sinuisoidal es un ibjeto que será fundamental para el sonido
+vivi								el nombre de nuestra onda, puede ser cualquier nombre, la debemos usar siempre, será nuestro nombre para hacer el llamado a la onda
+=>								chuck enviar
+Dac								Digital a análogo, estos son nuestros parlantes, o nuestra tarjeta de sonido
+"a continuación el volumen, el cual debe ir siempre de 0 hasta 1"
+0.4								nuestro valor de volumen o ganacia puede ir de 0 a 1 (0.1-0.2'0.3-0.4... 1)
+=>								chuck enviar
+vivi.gain							la ganancia es nuestro metodo para ajustar volumen
+"a continuación, la frecuencia, la cual en el oido humano va desde  0 a 4000 hercios"
+220								ejemplo rango de fercuencia que usaremos, puede ser cualquier número de 0 a 4000
+=>								chuck enviar
+vivi.freq							freq serpa nuestro método para ajustar la frecuencia
+" acontinuación el tiempo de duración de nuestro oscilador"
+1::
+second
+=>								chuck enviar
+now		
+
+código:
+	SinOsc vivi => dac;
+	0.4 => vivi.gain;
+	220=> vivi.freq;
+	1::second => now;
+
+"lo podemos hacer repetidas veces para crear uan composición, separar la onda de sus atributos y cambiarlos"
+
+código:
+	SinOsc vivi => dac;
+
+	0.4 => vivi.gain;
+	220=> vivi.freq;
+	1::second => now;
+
+	0.3 => vivi.gain;
+	430=> vivi.freq;
+	2::second => now;
+
+	0.5 => vivi.gain;
+	630=> vivi.freq;
+	1::second => now;
+
+"a parte de SinOsc exiten otras ondas, para usarlas no debe cambiar el nombre de la variable en este ejemplo"
+
+
+
+SqrOsc								Onda cuadrada
+
+código:
+	SqrOsc vivi => dac;
+
+	0.4 => vivi.gain;
+	220=> vivi.freq;
+	1::second => now;
+TriOsc								Onda triangular
+
+código:
+	TriOsc vivi => dac;
+
+	0.4 => vivi.gain;
+	220=> vivi.freq;
+	1::second => now;
+SawOsc	
+							Onda tipo sierra
+código:
+	SawOsc vivi => dac;
+
+	0.4 => vivi.gain;
+	220=> vivi.freq;
+	1::second => now;
+
+//TIPOS Y VARIABLES//
+
+//ejemplo de un entero//
+
+//Definir un entero//
+//Es importante darle un nombre a la variable de entero, asi poder almacenar un numero en esa variable//
+
+3 => int vivi;
+//operaciones matemáticas con variables
+4 *=> vivi;
+//imrprimir vivi
+<<<vivi>>>;
+
+
+
+//ESTRUCTURAS DE CONTROL
+
+
+//Condicionales If - Else
+
+
+
+SinOsc vivi => dac;
+
+445.23 => vivi.freq;
+0.6 => vivi.gain;
+
+//Variable cambio
+
+Código
+
+	4 => int cambio;
+
+	if (cambio == 4)							Si se mantiene la variable 4 sonará un segundo
+   
+	{ 
+   		 1:: second => now;
+	}
+
+	else									si la variable cambia, sonará la frecuencia 225.25 durante 2 segundos							
+    
+	{ 
+   		 225.25 => vivi.freq;
+   		 2:: second => now;
+	}
+
+//For Loop
+
+For										Es una reiteración, por lo general siempre estará acompañado de una variable, a su vez habrá dentro de él una condición 	
+										(como con if % else) en este caso true, esta condición le dar paso al código
+
+
+//creamos una variable para for y un condicional
+// v++ = v + 1 => v
+	
+	for ( 0 => int v; v<4; v++ )						0 => int v; es la inicialización, solo ocurrirá una vez, luego se escribe la condicional v<4; v es 0 entonces es verdad, finalmente v++ le estamos diciendo que si eso es verdad le sume uno a la variable v
+
+	{
+    		 <<< v >>>;							imprimir v
+    		1:: second => now;						cada segundo imprimira la variable + 1 como lo sentenciamos en la primera linea, solo hasta 4, donde la variavle v siga siendo menor que 4
+	}
+
+
+
+
