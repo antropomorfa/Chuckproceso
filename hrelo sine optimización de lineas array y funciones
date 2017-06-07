@@ -1,0 +1,39 @@
+SinOsc vivi => dac;
+
+	/*0.4 => vivi.gain;
+	220=> vivi.freq;
+	1::second => now;
+
+	0.3 => vivi.gain;
+	430=> vivi.freq;
+	2::second => now;
+
+	0.5 => vivi.gain;
+	630=> vivi.freq;
+    1::second => now;*/
+
+//forma 2
+/*fun void vi (float gain, float freq)
+{   
+    gain => vivi.gain;
+    freq => vivi.freq;
+    1::second => now;
+}
+vi (0.4,220);
+vi (0.3,430);
+vi (0.5, 630);*/
+
+fun void ra (float gain [], float freq [])
+{
+    for (int i; i < gain.cap(); i++)
+    {
+    gain [i] => vivi.gain;
+    freq [i]=> vivi.freq;
+    1::second => now;
+    }
+}
+
+
+ra ([0.4, 0.3, 0.5 ],[220.0,430.0,630.0]);
+
+
