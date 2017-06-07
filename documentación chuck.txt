@@ -130,6 +130,52 @@ For										Es una reiteración, por lo general siempre estará acompañado de una
     		1:: second => now;						cada segundo imprimira la variable + 1 como lo sentenciamos en la primera linea, solo hasta 4, donde la variavle v siga siendo menor que 4
 	}
 
+//Ejercicio del primer modulo
 
 
+        				
+        TriOsc v => dac;							// osciladores sonando uno despues del otra
+        TriOsc z => dac;
 
+        0.1 => v.gain;
+        0 => z.gain;
+
+        for ( 0 => int r; r<50; r++)
+            
+        {
+                r => v.freq;
+                0.01:: second => now;
+           
+        }
+        
+        0.1 => z.gain;
+        0 => v.gain;
+        
+        for ( 0 => int r; r<50; r++)
+            
+        {
+            r => z.gain;
+            0.01::second => now;
+            
+         }
+            
+         
+         
+         0.01 => v.gain;							//osciladores sonando al mismo tiempo
+         0.01 => z.gain;
+         
+         for (0 => int r; r<500; r++)
+             
+          {
+            r => z.gain;
+            r*2 => v.gain;
+            0.01::second => now;
+            
+         }
+
+CREAR MELODIAS
+
+// FRECUENCIA MIDI
+
+//lIBRERIA sTANDART FRECUENCY TO MIDI
+         
